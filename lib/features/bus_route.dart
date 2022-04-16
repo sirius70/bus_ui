@@ -3,6 +3,8 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../screens/drawer.dart';
+import 'Logs.dart';
+import 'package:bus_ui/features/attendace.dart';
 
 class Bus_routes extends StatelessWidget {
   const Bus_routes({Key? key}) : super(key: key);
@@ -10,29 +12,61 @@ class Bus_routes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        drawerEdgeDragWidth: MediaQuery.of(context).size.width,
-        drawer: NavigationDrawerWidget(),
-        appBar: AppBar(
-          title: Text("Home"),
-          // leading: IconButton(icon: const Icon(Icons.menu), onPressed: (){
-          //   NavigationDrawerWidget();
-          // },),
-        ),
-        backgroundColor: Colors.white,
-      //   body: Column(
-      //     children: [
-      //       TextButton(
-      //           onPressed: (){
-      //             Navigator.push(context, MaterialPageRoute(builder: (context){
-      //               return Tracker();
-      //             }));
-      // },
-      //           child: const Text("Bus tracking")
-      //       )
-      //     ],
-      //   ),
-      ),
+        child: Scaffold(
+          drawerEdgeDragWidth: MediaQuery.of(context).size.width,
+          drawer: NavigationDrawerWidget(),
+          appBar: AppBar(
+            title: const Text("Home"),
+          ),
+          backgroundColor: Colors.white,
+          body: Column(
+            children: [
+              Card(
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.account_circle_outlined,size: 50.0,),
+                      title: const Text("Children 1"),
+                      subtitle: Text(
+                        'Secondary Text',
+                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Tracker();
+                            }));
+                          },
+                          child: const Text('Bus Tracking'),
+                        ),
+                        TextButton(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Logs();
+                            }));
+                          },
+                          child: const Text('Logs'),
+                        ),
+                        TextButton(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context){
+                              return Attendance();
+                            }));
+                          },
+                          child: const Text('Attendance'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
     );
   }
 }
@@ -132,8 +166,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: const Text("Route Driection in Google Map"),
-        backgroundColor: Colors.deepPurpleAccent,
+        title: const Text("Buses"),
+        backgroundColor: Colors.blue,
       ),
       body: GoogleMap( //Map widget from google_maps_flutter package
         zoomGesturesEnabled: true, //enable Zoom in, out on map

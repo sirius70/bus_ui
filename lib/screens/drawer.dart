@@ -29,14 +29,14 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                 onClicked: () => selectedItem(context, 0)),
             Dividerwidget(),
             buildMenuItem(
-                text: 'Bus tracking',
-                icon: Icons.route_rounded,
-                onClicked: () => selectedItem(context, 1)),
-            Dividerwidget(),
-            buildMenuItem(
                 text: 'Logout',
                 icon: Icons.logout,
                 onClicked: () => selectedItem(context, 2)),
+            Dividerwidget(),
+            buildMenuItem(
+                text: 'Settings',
+                icon: Icons.settings_outlined,
+                onClicked: () => selectedItem(context, 0)),
           ],
         ),
       ),
