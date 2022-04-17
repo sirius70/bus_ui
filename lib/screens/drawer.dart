@@ -65,9 +65,9 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   void selectedItem(BuildContext context, int index) async {
     switch (index) {
       case 0:
-       //  Navigator.of(context).push(MaterialPageRoute(
-       //    builder: (context) => Profile(),
-       // ));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => profilePage(),
+       ));
 
         break;
       case 1:
